@@ -32,6 +32,7 @@ function LoginForm(props) {
                         'successMessage' : 'Login successful. Redirecting to home page..'
                     }))
                     localStorage.setItem(ACCESS_TOKEN_NAME,response.token);
+                    localStorage.setItem('username', state.nickname);
                     redirectToHome();
                     props.showError(null)
                 }
