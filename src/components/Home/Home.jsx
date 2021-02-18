@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import { ACCESS_TOKEN_NAME, API_BASE_URL } from '../../constants/apiConstants';
+import { ACCESS_TOKEN_NAME, API_BASE_URL, API_BASE_WEBSOCKET } from '../../constants/apiConstants';
 import './Home.css';
 import axios from 'axios'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
@@ -19,7 +19,7 @@ function Home(props) {
         room: 'redValley'
     });
     const [messages, setMessages] = useState([]);
-    const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/chat/' + state.room + '/');
+    const client = new W3CWebSocket(API_BASE_WEBSOCKET +'/ws/chat/' + state.room + '/');
     function scrollToBottom() {
         scroller.scrollTo('myScrollToElement', {
             containerId: 'chat',
